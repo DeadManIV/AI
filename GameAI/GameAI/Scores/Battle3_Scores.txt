@@ -1,0 +1,63 @@
+-------------------------------------------------------------
+Tank name: RichardBoyd   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ThomasLiang   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ZacSpriggs   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ReeceBailey   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: RuiMitchellDaSilva   SCORE: 34
+Bullets hit: 11		= 22
+Rockets hit: 7		= 7
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: BumbleBeeTank   SCORE: 85.5
+Bullets hit: 8		= 16
+Rockets hit: 21		= 21
+Mines hit: 2		= 6
+Tanks destroyed: 0	= 0
+Crates collected: 3	= 7.5
+Survival bonus': 7	= 35
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: PeterScorgie   SCORE: 334.5
+Bullets hit: 105		= 210
+Rockets hit: 21		= 21
+Mines hit: 12		= 36
+Tanks destroyed: 2	= 20
+Crates collected: 5	= 12.5
+Survival bonus': 7	= 35
+-------------------------------------------------------------

@@ -1,0 +1,63 @@
+-------------------------------------------------------------
+Tank name: LukeEaton   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: MatthewCrisp   SCORE: 2
+Bullets hit: 1		= 2
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: NathanOakes   SCORE: 10
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 2	= 5
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: NileMcmorrow   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: PaulOrgill   SCORE: 46
+Bullets hit: 5		= 10
+Rockets hit: 1		= 1
+Mines hit: 5		= 15
+Tanks destroyed: 0	= 0
+Crates collected: 2	= 5
+Survival bonus': 3	= 15
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: MichaelHodkin   SCORE: 176.5
+Bullets hit: 50		= 100
+Rockets hit: 4		= 4
+Mines hit: 5		= 15
+Tanks destroyed: 0	= 0
+Crates collected: 1	= 2.5
+Survival bonus': 11	= 55
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: BumbleBeeTank   SCORE: 140
+Bullets hit: 5		= 10
+Rockets hit: 5		= 5
+Mines hit: 10		= 30
+Tanks destroyed: 1	= 10
+Crates collected: 10	= 25
+Survival bonus': 12	= 60
+-------------------------------------------------------------

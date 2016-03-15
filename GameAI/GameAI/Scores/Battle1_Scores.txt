@@ -1,0 +1,54 @@
+-------------------------------------------------------------
+Tank name: AlexDogariu   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: JoeyRyan   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: BenOwen   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ImranAli   SCORE: 20
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 4	= 20
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: BumbleBeeTank   SCORE: 183.5
+Bullets hit: 25		= 50
+Rockets hit: 41		= 41
+Mines hit: 0		= 0
+Tanks destroyed: 1	= 10
+Crates collected: 9	= 22.5
+Survival bonus': 12	= 60
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: JacobLawton   SCORE: 60
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 12	= 60
+-------------------------------------------------------------
