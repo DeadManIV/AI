@@ -97,8 +97,13 @@ void TankManager::UpdateTanks(float deltaTime, SDL_Event e)
 		//If the health is below zero, delete this tank.
 		if(mTanks[i]->GetHealth() <= 0)
 		{
-			if(mTankIndexToDelete == -1)
-				mTankIndexToDelete = i;
+			if(!mTanks[i]->IsExploding())
+				mTanks[i]->Explode();
+			else if(mTanks[i]->HasExploded())
+			{
+				if(mTankIndexToDelete == -1)
+					mTankIndexToDelete = i;
+			}
 		}
 	}
 
@@ -204,7 +209,7 @@ BaseTank* TankManager::GetTankObject(SDL_Renderer* renderer, TankSetupDetails de
 }
 
 //--------------------------------------------------------------------------------------------------
-
+/*
 void TankManager::CheckForCollisions()
 {
 	vector<GameObject*> listOfObjects = ObstacleManager::Instance()->GetObstacles();
@@ -223,7 +228,7 @@ void TankManager::CheckForCollisions()
 		}
 	}
 }
-
+*/
 //--------------------------------------------------------------------------------------------------
 
 vector<BaseTank*>	TankManager::GetVisibleTanks(BaseTank* lookingTank)
@@ -235,7 +240,7 @@ vector<BaseTank*>	TankManager::GetVisibleTanks(BaseTank* lookingTank)
 		//Don't test self.
 		if(mTanks[i] != lookingTank)
 		{
-			if(mTanks.size() == 2)
+			if(mTanks.size() == 1)
 			{
 				//If only two tanks remain then return the toher tank (not self) even though we might not be able to see it.
 				mVisibleTanks.push_back(mTanks[i]);

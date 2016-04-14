@@ -1,15 +1,14 @@
-﻿Build started 14/03/2016 14:44:29.
-     1>Project "C:\Users\i015203e\Downloads\GameAI\GameAI\GameAI\GameAI.vcxproj" on node 2 (Build target(s)).
+﻿Build started 14/04/2016 13:40:39.
+     1>Project "C:\Users\i015203e\Documents\GameAI\GameAI\GameAI.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\i015203e\Downloads\GameAI\GameAI\GameAI\\SDL\mixer_include /IC:\Users\i015203e\Downloads\GameAI\GameAI\GameAI\\SDL\include /IC:\Users\i015203e\Downloads\GameAI\GameAI\GameAI\\SDL\image_include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt i015203eTank.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\Users\i015203e\Documents\GameAI\GameAI\\SDL\mixer_include /IC:\Users\i015203e\Documents\GameAI\GameAI\\SDL\include /IC:\Users\i015203e\Documents\GameAI\GameAI\\SDL\image_include /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt i015203eTank.cpp
          i015203eTank.cpp
-     1>c:\users\i015203e\downloads\gameai\gameai\gameai\commons.h(141): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\i015203e\downloads\gameai\gameai\gameai\commons.h(142): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\i015203e\downloads\gameai\gameai\gameai\i015203etank.cpp(195): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\i015203e\downloads\gameai\gameai\gameai\i015203etank.cpp(212): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\i015203e\downloads\gameai\gameai\gameai\i015203etank.cpp(248): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\i015203e\documents\gameai\gameai\i015203etank.cpp(427): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\i015203e\documents\gameai\gameai\i015203etank.cpp(591): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\i015203e\documents\gameai\gameai\i015203etank.cpp(608): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\i015203e\documents\gameai\gameai\i015203etank.cpp(644): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\i015203e\Downloads\GameAI\GameAI\Debug\GameAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\i015203e\Downloads\GameAI\GameAI\GameAI\\SDL kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\i015203e\Downloads\GameAI\GameAI\Debug\GameAI.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\i015203e\Downloads\GameAI\GameAI\Debug\GameAI.lib" /MACHINE:X86 Debug\BaseTank.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\i015203e\Documents\GameAI\Debug\GameAI.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\i015203e\Documents\GameAI\GameAI\\SDL kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\i015203e\Documents\GameAI\Debug\GameAI.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\i015203e\Documents\GameAI\Debug\GameAI.lib" /MACHINE:X86 Debug\BaseTank.obj
          Debug\Collisions.obj
          Debug\ControlledTank.obj
          Debug\DumbTank.obj
@@ -20,7 +19,7 @@
          Debug\i015203eTank.obj
          Debug\LevelMap.obj
          Debug\ObstacleManager.obj
-         Debug\Pathfinder.obj
+         Debug\i015203ePathfinder.obj
          Debug\PickUpManager.obj
          Debug\Projectile.obj
          Debug\ProjectileManager.obj
@@ -37,9 +36,9 @@
          SDL\SDL2main.lib
          SDL\SDL2_image.lib
          SDL\SDL2_mixer.lib
-         GameAI.vcxproj -> C:\Users\i015203e\Downloads\GameAI\GameAI\Debug\GameAI.exe
-     1>Done Building Project "C:\Users\i015203e\Downloads\GameAI\GameAI\GameAI\GameAI.vcxproj" (Build target(s)).
+         GameAI.vcxproj -> C:\Users\i015203e\Documents\GameAI\Debug\GameAI.exe
+     1>Done Building Project "C:\Users\i015203e\Documents\GameAI\GameAI\GameAI.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.96
+Time Elapsed 00:00:02.09

@@ -627,12 +627,12 @@
   </data>
  </layer>
  <objectgroup name="ObjectLayer" width="30" height="20">
-  <object name="Obstacle" x="128" y="255" width="253" height="125">
+  <object name="Obstacle" x="140" y="262" width="253" height="125">
    <properties>
     <property name="ID" value="3"/>
    </properties>
   </object>
-  <object name="Obstacle" x="610" y="255" width="253" height="125">
+  <object name="Obstacle" x="621" y="262" width="253" height="125">
      <properties>
        <property name="ID" value="3"/>
      </properties>
