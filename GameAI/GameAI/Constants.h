@@ -11,62 +11,66 @@ const float   MaxFloat  = (std::numeric_limits<float>::max)();
 const float   MinFloat  = (std::numeric_limits<float>::min)();
 
 //Angle manipulation.
-const double   Pi					= 3.14159;
-const double   TwoPi				= Pi * 2;
-const double   HalfPi				= Pi / 2;
-const double   QuarterPi			= Pi / 4;
+const double   Pi							= 3.14159;
+const double   TwoPi						= Pi * 2;
+const double   HalfPi						= Pi / 2;
+const double   QuarterPi					= Pi / 4;
 
 inline double DegsToRads(double degrees) {return TwoPi * (degrees/360.0f);}
 inline double RadsToDegs(double radians) {return radians * (180.0f/Pi);}
 
 //Screen dimensions.
-const int kScreenWidth					= 960;
-const int kScreenHeight					= 640;
+const int kScreenWidth						= 960;
+const int kScreenHeight						= 640;
 
-const int kTileDimensions				= 32;
+const int kTileDimensions					= 32;
 
 //Spritesheet / sprite animations.
-const int   kNumberOfSpritesPerMan		= 3;
-const float kBulletFireDelay			= 0.1f;
-const float kCannonFireDelay			= 0.25f;
-const int	kNumberOfSpritesForCannon	= 3;
+const int   kNumberOfSpritesPerMan			= 3;
+const float kBulletFireDelay				= 0.1f;
+const float kCannonFireDelay				= 0.25f;
+const int	kNumberOfSpritesForCannon		= 3;
+const int   kNumberOfSpritesPerExplosion	= 6;
+const float kExplosionDelay					= 0.1f;
 
 //Delays
-const float kTimeBetweenBullets			= 0.5f;
-const float kTimeBetweenRockets			= 1.0f;
-const float kTimeBetweenMines			= 1.5f;
-const float kTimeBetweenPickups			= 15.0f;
+const float kTimeBetweenBullets				= 0.5f;
+const float kTimeBetweenRockets				= 1.0f;
+const float kTimeBetweenMines				= 1.5f;
+const float kTimeBetweenPickups				= 15.0f;
 
 //Time
-const float kSurvivalTimeUntilBonus		= 30.0f;
+const float kSurvivalTimeUntilBonus			= 30.0f;
 
 //Scores
-const float kScore_BulletHit			= 2.0f;
-const float kScore_RocketHit			= 1.0f;
-const float kScore_MineHit				= 3.0f;
-const float kScore_DestroyedTank		= 10.0f;
-const float kScore_SurvivalBonus		= 5.0f;
-const float kScore_PickUp				= 2.5f;
-const float kMaxScore					= 20.0f;
+const float kScore_BulletHit				= 2.0f;
+const float kScore_RocketHit				= 1.0f;
+const float kScore_MineHit					= 3.0f;
+const float kScore_DestroyedTank			= 10.0f;
+const float kScore_SurvivalBonus			= 5.0f;
+const float kScore_PickUp					= 2.5f;
+const float kMaxScore						= 20.0f;
 
 //Weapon damage
-const int		kBulletDamage			= 1;
-const int		kRocketDamage			= 5;
-const int		kMineDamage				= 10;
+const int		kBulletDamage				= 1;
+const int		kRocketDamage				= 5;
+const int		kMineDamage					= 10;
 
 //Speeds
-const float		kSpeedIncrement			= 1000.0f;
-const float		kReboundSpeed			= -30.0f;
-const float		kBulletSpeed			= 150.0f;
-const float		kRocketSpeed			= 250.0f;
+const float		kSpeedIncrement				= 1000.0f;
+const float		kReboundSpeed				= -30.0f;
+const float		kBulletSpeed				= 150.0f;
+const float		kRocketSpeed				= 250.0f;
+
+const float		kManTurnRate				= 2.0f;
 
 //Tank details.
-const float		kFieldOfView			= 0.85f;
-const float		kFieldOfViewLength		= 250.0f;
+const float		kFieldOfView				= 0.85f;
+const float		kFieldOfViewLength			= 250.0f;
 
-const float		kAudioLargeRadius		= 60.0f;
-const float		kAudioMediumRadius		= 47.0f;
-const float		kAudioMediumRadius2		= 45.0f;
-const float		kAudioSmallRadius		= 30.0f;
+const float		kAudioLargeRadius			= 60.0f;
+const float		kAudioMediumRadius			= 47.0f;
+const float		kAudioMediumRadius2			= 45.0f;
+const float		kAudioSmallRadius			= 30.0f;
 
 #endif //CONSTANTS_H

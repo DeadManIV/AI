@@ -13,19 +13,27 @@ using namespace::std;
 i015203eTank::i015203eTank(SDL_Renderer* renderer, TankSetupDetails details)
 	: BaseTank(renderer, details)
 {
-	seekOn = false;
+	seekOn = true;
 	fleeOn = false;
 	fleeRadiusOn = false;
 	arriveOn = false;
 	pursuitOn = false;
-	obstacleAvoidanceOn = true;
+	obstacleAvoidanceOn = false;
 	obstacleCircle = false;
 	pathfinderBool = false;
+
 	mousePos = Vector2D(0, 0);
 	lastMousePos = Vector2D(0, 0);
 	mouseChanged = Vector2D(1, 1);
+
 	pathfinder = new Pathfinder();
 	currentNode = -1; 
+
+	waypoints = WaypointManager::Instance()->GetAllWaypoints();
+
+	pickups = PickUpManager::Instance()->GetAllPickUps();
+
+	SwitchState(WANDER);
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -46,57 +54,445 @@ void i015203eTank::ChangeState(BASE_TANK_STATE newState)
 
 void i015203eTank::Update(float deltaTime, SDL_Event e)
 {
+	pickups = PickUpManager::Instance()->GetAllPickUps();
+
 	UpdateInput(e);
 
-	if (mousePos.x != 0 && mousePos.y != 0)
-	{	
-		if (pathfinderBool)
-		{
-			if (mouseChanged != mousePos)
-			{		
-				mouseChanged = mousePos;
-				path = pathfinder->FindPath(GetCentralPosition(), mousePos);
-				currentNode = path.size()-1;
-			}
-			if (currentNode == 0)
-			{
-				seekOn = false;
-				arriveOn = true;
-			}
-			else
-			{
-				seekOn = true;
-				arriveOn = false;
-			}
+	UpdateState(deltaTime);
 
-			if (currentNode > -1)
-			{
-				combinedForces = CombinedForces(path[currentNode]);
-			}
-			else
-			{
-				mVelocity = Vector2D(0, 0);
-			}	
+	CheckIfStateNeedsChange();
 
-			if (currentNode > -1 && GetCentralPosition().Distance(mousePos) < GetCentralPosition().Distance(path[currentNode]))
-			{
-				currentNode = currentNode - 1;
-				combinedForces = CombinedForces(mousePos);
-			}
+	//if (mousePos.x != 0 && mousePos.y != 0)
+	//{	
+	//	if (pathfinderBool)
+	//	{
+	//		if (mouseChanged != mousePos)
+	//		{		
+	//			mouseChanged = mousePos;
+	//			path = pathfinder->FindPath(GetCentralPosition(), mousePos);
+	//			currentNode = path.size()-1;
+	//		}
+	//		if (currentNode == 0)
+	//		{
+	//			seekOn = false;
+	//			arriveOn = true;
+	//		}
+	//		else
+	//		{
+	//			seekOn = true;
+	//			arriveOn = false;
+	//		}
 
-			if (currentNode != -1 && isInsideRectangle(path[currentNode], GetAdjustedBoundingBox()))
-			{
-				currentNode = currentNode - 1;
-			}
-		}
-		else
-		{
-			combinedForces = CombinedForces(mousePos);
-		}
-	}
+	//		if (currentNode > -1)
+	//		{
+	//			combinedForces = CombinedForces(path[currentNode]);
+	//		}
+	//		else
+	//		{
+	//			mVelocity = Vector2D(0, 0);
+	//		}	
+
+	//		if (currentNode > -1 && GetCentralPosition().Distance(mousePos) < GetCentralPosition().Distance(path[currentNode]))
+	//		{
+	//			currentNode = currentNode - 1;
+	//			combinedForces = CombinedForces(mousePos);
+	//		}
+
+	//		if (currentNode != -1 && isInsideRectangle(path[currentNode], GetAdjustedBoundingBox()))
+	//		{
+	//			currentNode = currentNode - 1;
+	//		}
+	//	}
+	//	else
+	//	{
+	//		combinedForces = CombinedForces(mousePos);
+	//	}
+	//}
 
 	//Call parent update.
 	BaseTank::Update(deltaTime, e);
+}
+
+void i015203eTank::UpdateInput(SDL_Event e)
+{
+	if (pursuitOn)
+	{
+		switch (e.type)
+		{
+		case SDL_MOUSEMOTION:
+			mousePos.x = e.motion.x;
+			mousePos.y = e.motion.y;
+			break;
+		}
+	}
+	else
+	{
+		switch (e.type)
+		{
+		case SDL_MOUSEBUTTONDOWN:
+			mousePos.x = e.button.x;
+			mousePos.y = e.button.y;
+			break;
+		}
+	}
+	switch (e.type)
+	{
+	case SDL_KEYDOWN:
+		switch (e.key.keysym.sym)
+		{
+		//Seek on only
+		case SDLK_1:
+			if (!seekOn)
+			{
+				seekOn = true;
+			}
+			if (fleeOn)
+			{
+				fleeOn = false;
+			}
+			if (arriveOn)
+			{
+				arriveOn = false;
+			}
+			if (fleeRadiusOn)
+			{
+				fleeRadiusOn = false;
+			}
+			if (pursuitOn)
+			{
+				pursuitOn = false;
+			}
+			break;
+		//Flee on only
+		case SDLK_2:
+			if (seekOn)
+			{
+				seekOn = false;
+			}
+			if (arriveOn)
+			{
+				arriveOn = false;
+			}
+			if (!fleeOn)
+			{
+				fleeOn = true;
+			}
+			if (fleeRadiusOn)
+			{
+				fleeRadiusOn = false;
+			}
+			if (pursuitOn)
+			{
+				pursuitOn = false;
+			}
+			break;
+		//Flee radius on
+		case SDLK_3:
+			if (seekOn)
+			{
+				seekOn = false;
+			}
+			if (arriveOn)
+			{
+				arriveOn = false;
+			}
+			if (!fleeOn)
+			{
+				fleeOn = true;
+			}
+			if (!fleeRadiusOn)
+			{
+				fleeRadiusOn = true;
+			}
+			if (pursuitOn)
+			{
+				pursuitOn = false;
+			}
+			break;
+		//Arrive on
+		case SDLK_4:
+			if (!arriveOn)
+			{
+				arriveOn = true;
+			}
+			if (seekOn)
+			{
+				seekOn = false;
+			}
+			if (fleeOn)
+			{
+				fleeOn = false;
+			}
+			if (fleeRadiusOn)
+			{
+				fleeRadiusOn = false;
+			}
+			if (pursuitOn)
+			{
+				pursuitOn = false;
+			}
+			break;
+		case SDLK_5:
+			if (arriveOn)
+			{
+				arriveOn = false;
+			}
+			if (seekOn)
+			{
+				seekOn = false;
+			}
+			if (fleeOn)
+			{
+				fleeOn = false;
+			}
+			if (fleeRadiusOn)
+			{
+				fleeRadiusOn = false;
+			}
+			if (!pursuitOn)
+			{
+				pursuitOn = true;
+			}
+			break;
+		case SDLK_6:
+			if (obstacleAvoidanceOn)
+			{
+				obstacleAvoidanceOn = false;
+			}
+			else
+			{
+				obstacleAvoidanceOn = true;
+			}
+		case SDLK_7:
+			if (obstacleCircle)
+			{
+				obstacleCircle = false;
+			}
+			else
+			{
+				obstacleCircle = true;
+			}
+			break;
+		}
+	}
+}
+
+void i015203eTank::UpdateState(float deltaTime)
+{
+	switch (currentState)
+	{
+	case COLLECT:
+		if (collectCurrentNode == -1)
+		{
+			SwitchState(WANDER);
+		}
+
+		if (collectCurrentNode > -1)
+		{
+			combinedForces = CombinedForces(collectPath[collectCurrentNode]);
+		}
+		else
+		{
+			mVelocity = Vector2D(0, 0);
+		}
+
+		if (collectCurrentNode > -1 && GetCentralPosition().Distance(collectLocation) < GetCentralPosition().Distance(collectPath[collectCurrentNode]))
+		{
+			collectCurrentNode = collectCurrentNode - 1;
+			combinedForces = CombinedForces(collectLocation);
+		}
+
+		if (collectCurrentNode != -1 && isInsideRectangle(collectPath[collectCurrentNode], GetAdjustedBoundingBox()))
+		{
+			collectCurrentNode = collectCurrentNode - 1;
+		}
+		break;
+	case WANDER:
+		if (wanderCurrentNode == -1)
+		{
+			SwitchState(WANDER);
+		}
+
+		if (wanderCurrentNode > -1)
+		{
+			combinedForces = CombinedForces(wanderPath[wanderCurrentNode]);
+		}
+		else
+		{
+			mVelocity = Vector2D(0, 0);
+		}
+
+		if (wanderCurrentNode > -1 && GetCentralPosition().Distance(wanderLocation) < GetCentralPosition().Distance(wanderPath[wanderCurrentNode]))
+		{
+			wanderCurrentNode = wanderCurrentNode - 1;
+			combinedForces = CombinedForces(wanderLocation);
+		}
+
+		if (wanderCurrentNode != -1 && isInsideRectangle(wanderPath[wanderCurrentNode], GetAdjustedBoundingBox()))
+		{
+			wanderCurrentNode = wanderCurrentNode - 1;
+		}
+		break;
+	case FLEE:
+		if (fleeCurrentNode == -1)
+		{
+			SwitchState(WANDER);
+		}
+
+		if (fleeCurrentNode > -1)
+		{
+			combinedForces = CombinedForces(fleePath[fleeCurrentNode]);
+		}
+		else
+		{
+			mVelocity = Vector2D(0, 0);
+		}
+
+		if (fleeCurrentNode > -1 && GetCentralPosition().Distance(wanderLocation) < GetCentralPosition().Distance(fleePath[fleeCurrentNode]))
+		{
+			fleeCurrentNode = fleeCurrentNode - 1;
+			combinedForces = CombinedForces(fleeLocation);
+		}
+
+		if (fleeCurrentNode != -1 && isInsideRectangle(fleePath[fleeCurrentNode], GetAdjustedBoundingBox()))
+		{
+			fleeCurrentNode = fleeCurrentNode - 1;
+		}
+		break;
+	case ATTACK_SHOOT:
+	{
+		if (mTanksICanSee.size() != 0)
+		{			
+			lastKnownPos = mTanksICanSee[0]->GetCentralPosition();
+
+			Vector2D toTarget = mTanksICanSee[0]->GetCentralPosition() - GetCentralPosition();
+			toTarget.Normalize();
+			double dot = toTarget.Dot(mManFireDirection);
+			if (dot < 0.999f)
+				RotateManByRadian(kManTurnRate, 1, deltaTime);
+
+			ChangeState(TANKSTATE_MANFIRE);			
+			
+			mVelocity = Vector2D(0,0);
+		}
+		else
+		{
+			combinedForces = CombinedForces(lastKnownPos);
+			if (isInsideRectangle(lastKnownPos, GetAdjustedBoundingBox()))
+			{
+				SwitchState(WANDER);
+			}
+			ChangeState(TANKSTATE_IDLE);
+		}
+	}
+		break;
+	case ATTACK_MINE:
+
+		break;
+	}
+}
+
+void i015203eTank::SwitchState(STATE state)
+{
+	int newLocation = rand() % (waypoints.size() - 1) + 0; //Doesn't work in switch statement, will figure out later
+
+	switch (state)
+	{
+	case COLLECT:
+		currentState = COLLECT;
+
+		collectLocation = pickups[0]->GetCentralPosition();
+
+		collectPath = pathfinder->FindPath(GetCentralPosition(), collectLocation);
+
+		collectCurrentNode = collectPath.size() - 1;
+		break;
+	case WANDER:
+		currentState = WANDER;
+
+		wanderLocation = waypoints[newLocation]->GetPosition();
+
+		wanderPath = pathfinder->FindPath(GetCentralPosition(), wanderLocation);
+
+		wanderCurrentNode = wanderPath.size() - 1;
+		break;
+	case FLEE:
+	{
+		currentState = FLEE;
+
+		Vector2D position = mTanksICanSee[0]->GetCentralPosition();
+
+		Waypoint* furthestWaypoint = waypoints[0];
+
+		for (int i = 1; i < waypoints.size(); i++)
+		{
+			if (position.Distance(waypoints[i]->GetPosition()) > position.Distance(furthestWaypoint->GetPosition()))
+			{
+				furthestWaypoint = waypoints[i];
+			}
+		}
+
+		fleeLocation = furthestWaypoint->GetPosition();
+
+		fleePath = pathfinder->FindPath(GetCentralPosition(), fleeLocation);
+
+		fleeCurrentNode = fleePath.size() - 1;
+		break;
+	}
+	case ATTACK_SHOOT:
+		currentState = ATTACK_SHOOT;
+
+		break;
+	case ATTACK_MINE:
+		currentState = ATTACK_MINE;
+
+		break;
+	}
+}
+
+void i015203eTank::CheckIfStateNeedsChange()
+{
+	//Order here decides whats most important - so enemy stuff should be at the top
+	if (GetRockets() < 5 || GetBullets() < 5)
+	{
+		if (pickups.size() > 0)
+		{
+			SwitchState(COLLECT);
+		}
+		else
+		{
+			SwitchState(WANDER);
+		}
+	}
+	else if (mTanksICanSee.size() > 0)
+	{
+		//SwitchState(FLEE);
+
+		SwitchState(ATTACK_SHOOT);
+	}
+	//The bottom one forces it to flee all the way (to the waypoint), the one above doesn't
+	else if (currentState != COLLECT)
+	{
+		if (pickups.size() > 0)
+		{
+			SwitchState(COLLECT);
+		}
+	}
+	//else if (currentState == WANDER)
+	//{
+	//	if (pickups.size() > 0)
+	//	{
+	//		SwitchState(COLLECT);
+	//	}
+	//}
+
+	//else
+	//{
+	//	if (currentState != WANDER)
+	//	{
+	//		SwitchState(WANDER);
+	//	}
+	//}
 }
 
 Vector2D i015203eTank::Seek(Vector2D TargetPos)
@@ -297,170 +693,6 @@ Vector2D i015203eTank::Pursuit(Vector2D TargetPos)
 	return Seek(pursuit);
 }
 
-void i015203eTank::UpdateInput(SDL_Event e)
-{
-	if (pursuitOn)
-	{
-		switch (e.type)
-		{
-		case SDL_MOUSEMOTION:
-			mousePos.x = e.motion.x;
-			mousePos.y = e.motion.y;
-			break;
-		}
-	}
-	else
-	{
-		switch (e.type)
-		{
-		case SDL_MOUSEBUTTONDOWN:
-			mousePos.x = e.button.x;
-			mousePos.y = e.button.y;
-			break;
-		}
-	}
-	switch (e.type)
-	{
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-		//Seek on only
-		case SDLK_1:
-			if (!seekOn)
-			{
-				seekOn = true;
-			}
-			if (fleeOn)
-			{
-				fleeOn = false;
-			}
-			if (arriveOn)
-			{
-				arriveOn = false;
-			}
-			if (fleeRadiusOn)
-			{
-				fleeRadiusOn = false;
-			}
-			if (pursuitOn)
-			{
-				pursuitOn = false;
-			}
-			break;
-		//Flee on only
-		case SDLK_2:
-			if (seekOn)
-			{
-				seekOn = false;
-			}
-			if (arriveOn)
-			{
-				arriveOn = false;
-			}
-			if (!fleeOn)
-			{
-				fleeOn = true;
-			}
-			if (fleeRadiusOn)
-			{
-				fleeRadiusOn = false;
-			}
-			if (pursuitOn)
-			{
-				pursuitOn = false;
-			}
-			break;
-		//Flee radius on
-		case SDLK_3:
-			if (seekOn)
-			{
-				seekOn = false;
-			}
-			if (arriveOn)
-			{
-				arriveOn = false;
-			}
-			if (!fleeOn)
-			{
-				fleeOn = true;
-			}
-			if (!fleeRadiusOn)
-			{
-				fleeRadiusOn = true;
-			}
-			if (pursuitOn)
-			{
-				pursuitOn = false;
-			}
-			break;
-		//Arrive on
-		case SDLK_4:
-			if (!arriveOn)
-			{
-				arriveOn = true;
-			}
-			if (seekOn)
-			{
-				seekOn = false;
-			}
-			if (fleeOn)
-			{
-				fleeOn = false;
-			}
-			if (fleeRadiusOn)
-			{
-				fleeRadiusOn = false;
-			}
-			if (pursuitOn)
-			{
-				pursuitOn = false;
-			}
-			break;
-		case SDLK_5:
-			if (arriveOn)
-			{
-				arriveOn = false;
-			}
-			if (seekOn)
-			{
-				seekOn = false;
-			}
-			if (fleeOn)
-			{
-				fleeOn = false;
-			}
-			if (fleeRadiusOn)
-			{
-				fleeRadiusOn = false;
-			}
-			if (!pursuitOn)
-			{
-				pursuitOn = true;
-			}
-			break;
-		case SDLK_6:
-			if (obstacleAvoidanceOn)
-			{
-				obstacleAvoidanceOn = false;
-			}
-			else
-			{
-				obstacleAvoidanceOn = true;
-			}
-		case SDLK_7:
-			if (obstacleCircle)
-			{
-				obstacleCircle = false;
-			}
-			else
-			{
-				obstacleCircle = true;
-			}
-			break;
-		}
-	}
-}
-
 Vector2D i015203eTank::GetClientCursorPosition()
 {
 	POINT MousePos;
@@ -498,7 +730,7 @@ void i015203eTank::MoveInHeadingDirection(float deltaTime)
 		ahead = mHeading;
 	Vec2DNormalize(ahead);
 
-	RotateHeadingToFacePosition(GetCentralPosition() + ahead * 10.0f);
+	RotateHeadingToFacePosition(GetCentralPosition() + ahead * 10.0f, deltaTime * 5.0f);
 }
 
 Vector2D i015203eTank::CombinedForces(Vector2D desiredPos)
@@ -507,7 +739,7 @@ Vector2D i015203eTank::CombinedForces(Vector2D desiredPos)
 
 	if (seekOn)
 	{
-		accumulatedForce += /*0.2 **/ Seek(desiredPos)/* * 3*/;
+		accumulatedForce += /*0.2 **/ Seek(desiredPos) * 8;
 	}
 
 	if (fleeOn)

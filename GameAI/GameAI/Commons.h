@@ -10,7 +10,7 @@ using namespace::std;
 #define AUDIO_VISIBLE 
 #define DEBUG_LINES_VISIBLE
 
-const string kTilemapPath			= "XML Data Files/Arena.xml";
+const string kTilemapPath			= "XML Data Files/GameAI.xml";
 const string kScorePath				= "Scores/Scores.txt";
 const string kTankPath				= "XML Data Files/TankData.xml";
 const string kBulletPath			= "Images/Bullet.png";
@@ -22,6 +22,7 @@ const string kHealthPickUpPath		= "Images/CrateHealth.png";
 const string kRocketPickUpPath		= "Images/CrateRockets.png";
 const string kBulletPickUpPath		= "Images/CrateBullets.png";
 const string kMinePickUpPath		= "Images/CrateMines.png";
+const string kExplosionImagePath	= "Images/Explosion.png";
 
 enum Deceleration
 { 
@@ -138,8 +139,8 @@ struct Rect2D
 	RotatedRect2D RotateRect(double theta)
 	{
 		RotatedRect2D rotatedRect;
-		float centreX = x + width*0.5f;
-		float centreY = y + height*0.5f;
+		double centreX = x + width*0.5f;
+		double centreY = y + height*0.5f;
 
 		double cosTheta = cos( theta );
 		double sinTheta = sin( theta );

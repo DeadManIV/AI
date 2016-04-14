@@ -28,6 +28,15 @@ BaseTank::BaseTank(SDL_Renderer* renderer, TankSetupDetails details)
 	mManRotationAngle		= 0.0f;
 	mManFireDirection		= Vector2D(0.0f, -1.0f);
 
+	mExplosionSpritesheet			= new Texture2D(renderer);
+	mExplosionSpritesheet->LoadFromFile(kExplosionImagePath);
+	mExplosionSingleSpriteWidth		= mExplosionSpritesheet->GetWidth();
+	mExplosionSingleSpriteHeight	= mExplosionSpritesheet->GetHeight()/kNumberOfSpritesPerExplosion;
+	mExploding						= false;
+	mExplosionTime					= 0.0f;
+	mExplosionOffset.x	= -(mExplosionSingleSpriteWidth*0.5f);
+	mExplosionOffset.y	= -(mExplosionSingleSpriteHeight*0.5f);
+
 	mBulletDelay			= kTimeBetweenBullets;
 	mRocketDelay			= kTimeBetweenRockets;
 	mMineDelay				= kTimeBetweenMines;
@@ -47,7 +56,7 @@ BaseTank::BaseTank(SDL_Renderer* renderer, TankSetupDetails details)
 
 	//TODO: Read these details in from xml.
 	mMaxForce				= 10.0f;
-	mMaxTurnRate			= details.TurnRate / 100.0f;
+	mMaxTurnRate			= details.TurnRate;
 
 	mRockets				= details.NumOfRockets;
 	mBullets				= details.NumOfBullets;
@@ -192,70 +201,85 @@ void BaseTank::AddToScore(SCORE_TYPE scoreType)
 
 void BaseTank::Update(float deltaTime, SDL_Event e)
 {
-	mBulletDelay -= deltaTime;
-	mRocketDelay -= deltaTime;
-	mMineDelay   -= deltaTime;
-
-	//Be sure you call this function from your child class.
-	switch(mCurrentState)
+	if(!mAlive)
 	{
-		case TANKSTATE_IDLE:
-		break;
-
-		case TANKSTATE_DEAD:
-		break;
-
-		case TANKSTATE_MANFIRE:
-			//Increment the time the current sprite has been displayed.
-			mManFireTime += deltaTime;
+		//Increment the time the current sprite has been displayed.
+		mExplosionTime += deltaTime;
 			
-			//If the requisite time has passed, flip the flag.
-			if(mManFireTime > kBulletFireDelay)
-			{
-  				mManFireFrame = !mManFireFrame;
-				mManFireTime = 0.0f;
-
-				//Fire another bullet.
-				FireABullet();
-
-				//We need to ensure the tank can fire.
-				if(mBullets <= 0.0f)
-					ChangeState(TANKSTATE_IDLE);
-			}
-		break;
-
-		case TANKSTATE_CANNONFIRE:
-			//Increment the time the current sprite has been displayed.
-			mCannonFireTime += deltaTime;
-			
-			//If the requisite time has passed, flip the flag.
-			if(mCannonFireTime > kCannonFireDelay)
-			{
-  				mCannonFireFrame = !mCannonFireFrame;
-				
-				//We need to ensure the tank can fire.
-				if(mRockets <= 0 || mCannonFireTime >= (kCannonFireDelay*2))
-				{
-					mFiringRocket = false;
-					ChangeState(TANKSTATE_IDLE);
-				}
-			}
-		break;
-
-		case TANKSTATE_DROPMINE:
-			ChangeState(TANKSTATE_IDLE);
-		break;
+		//If the requisite time has passed, increment the frame number.
+		if(mExplosionTime > kExplosionDelay)
+		{
+  			mExplosionFrame++;
+			mExplosionTime = 0.0f;
+		}
 	}
+	else
+	{
+		mBulletDelay -= deltaTime;
+		mRocketDelay -= deltaTime;
+		mMineDelay   -= deltaTime;
 
-	mTanksICanSee  = TankManager::Instance()->GetVisibleTanks(this);
-	mTanksICanHear = TankManager::Instance()->GetAudibleTanks(this);
+		//Be sure you call this function from your child class.
+		switch(mCurrentState)
+		{
+			case TANKSTATE_IDLE:
+			break;
 
-	MoveInHeadingDirection(deltaTime);
+			case TANKSTATE_DEAD:
+			break;
+
+			case TANKSTATE_MANFIRE:
+				//Increment the time the current sprite has been displayed.
+				mManFireTime += deltaTime;
+			
+				//If the requisite time has passed, flip the flag.
+				if(mManFireTime > kBulletFireDelay)
+				{
+  					mManFireFrame = !mManFireFrame;
+					mManFireTime = 0.0f;
+
+					//Fire another bullet.
+					FireABullet();
+
+					//We need to ensure the tank can fire.
+					if(mBullets <= 0.0f)
+						ChangeState(TANKSTATE_IDLE);
+				}
+			break;
+
+			case TANKSTATE_CANNONFIRE:
+				//Increment the time the current sprite has been displayed.
+				mCannonFireTime += deltaTime;
+			
+				//If the requisite time has passed, flip the flag.
+				if(mCannonFireTime > kCannonFireDelay)
+				{
+  					mCannonFireFrame = !mCannonFireFrame;
+				
+					//We need to ensure the tank can fire.
+					if(mRockets <= 0 || mCannonFireTime >= (kCannonFireDelay*2))
+					{
+						mFiringRocket = false;
+						ChangeState(TANKSTATE_IDLE);
+					}
+				}
+			break;
+
+			case TANKSTATE_DROPMINE:
+				ChangeState(TANKSTATE_IDLE);
+			break;
+		}
+
+		mTanksICanSee  = TankManager::Instance()->GetVisibleTanks(this);
+		mTanksICanHear = TankManager::Instance()->GetAudibleTanks(this);
+
+		MoveInHeadingDirection(deltaTime);
 
 	
-	mGunfireNoiseAffect = 0.0f;
-	if(mCurrentState == TANKSTATE_MANFIRE || mCurrentState == TANKSTATE_CANNONFIRE)
-		mGunfireNoiseAffect = 5.0f;
+		mGunfireNoiseAffect = 0.0f;
+		if(mCurrentState == TANKSTATE_MANFIRE || mCurrentState == TANKSTATE_CANNONFIRE)
+			mGunfireNoiseAffect = 5.0f;
+	}
 
 }
 
@@ -263,35 +287,44 @@ void BaseTank::Update(float deltaTime, SDL_Event e)
 
 void BaseTank::Render()
 {
-	//Draw the noise radius.
-	DrawDebugCircle(GetCentralPosition(), mNoiseRadius+mGunfireNoiseAffect, 0, 255, 0);
-
-	//Call parent render function.
-	GameObject::Render();
-
-	//Draw the left cannon.
-	if(mCannonAttachedLeft)
+	if(mAlive == true)
 	{
-		SDL_Rect destRect = {(int)mPosition.x, (int)mPosition.y, mCannonSingleSpriteWidth, mCannonSingleSpriteHeight};
-		mCannonSpritesheet->Render(GetCurrentCannonSprite(), destRect, mRotationAngle); 
-	}
+		//Draw the noise radius.
+		DrawDebugCircle(GetCentralPosition(), mNoiseRadius+mGunfireNoiseAffect, 0, 255, 0);
 
-	//Draw the right cannon.
-	if(mCannonAttachedRight)
+		//Call parent render function.
+		GameObject::Render();
+
+		//Draw the left cannon.
+		if(mCannonAttachedLeft)
+		{
+			SDL_Rect destRect = {(int)mPosition.x, (int)mPosition.y, mCannonSingleSpriteWidth, mCannonSingleSpriteHeight};
+			mCannonSpritesheet->Render(GetCurrentCannonSprite(), destRect, mRotationAngle); 
+		}
+
+		//Draw the right cannon.
+		if(mCannonAttachedRight)
+		{
+			SDL_Rect destRect = {(int)mPosition.x, (int)mPosition.y, mCannonSingleSpriteWidth, mCannonSingleSpriteHeight};
+			mCannonSpritesheet->Render(GetCurrentCannonSprite(), destRect, SDL_FLIP_HORIZONTAL, mRotationAngle); 
+		}
+
+		//Draw the hearing radius.
+		DrawDebugCircle(GetCentralPosition(), mHearingRadius-mGunfireNoiseAffect, 255, 255, 0);
+
+		//Draw the man image.
+		SDL_Rect destRect = {(int)(mPosition.x+mManOffset.x), (int)(mPosition.y+mManOffset.y), mManSingleSpriteWidth, mManSingleSpriteHeight};
+		mManSpritesheet->Render(GetCurrentManSprite(), destRect, mManRotationAngle); 
+
+		//Draw the field of view lines.
+		DrawFoV();
+	}
+	else
 	{
-		SDL_Rect destRect = {(int)mPosition.x, (int)mPosition.y, mCannonSingleSpriteWidth, mCannonSingleSpriteHeight};
-		mCannonSpritesheet->Render(GetCurrentCannonSprite(), destRect, SDL_FLIP_HORIZONTAL, mRotationAngle); 
+		//Draw the explosion image.
+		SDL_Rect destRect = {(int)(GetCentralPosition().x+mExplosionOffset.x), (int)(GetCentralPosition().y+mExplosionOffset.y), mExplosionSingleSpriteWidth, mExplosionSingleSpriteHeight};
+		mExplosionSpritesheet->Render(GetCurrentExplosionSprite(), destRect, 0); 
 	}
-
-	//Draw the hearing radius.
-	DrawDebugCircle(GetCentralPosition(), mHearingRadius-mGunfireNoiseAffect, 255, 255, 0);
-
-	//Draw the man image.
-	SDL_Rect destRect = {(int)(mPosition.x+mManOffset.x), (int)(mPosition.y+mManOffset.y), mManSingleSpriteWidth, mManSingleSpriteHeight};
-	mManSpritesheet->Render(GetCurrentManSprite(), destRect, mManRotationAngle); 
-
-	//Draw the field of view lines.
-	DrawFoV();
 }
 
 //--------------------------------------------------------------------------------------------------
@@ -377,6 +410,20 @@ SDL_Rect BaseTank::GetCurrentManSprite()
 
 //--------------------------------------------------------------------------------------------------
 
+SDL_Rect BaseTank::GetCurrentExplosionSprite()
+{
+	//NOTE: Spritesheets are currently made of a single column of images.
+	SDL_Rect portionOfSpritesheet = {0, 0, mExplosionSingleSpriteWidth, mExplosionSingleSpriteHeight};
+
+	portionOfSpritesheet.y = mExplosionFrame * mExplosionSingleSpriteHeight;
+
+	//DEBUG: See which frame is being output.
+	//cout << portionOfSpritesheet.y << endl;
+	return portionOfSpritesheet;
+}
+
+//--------------------------------------------------------------------------------------------------
+
 SDL_Rect BaseTank::GetCurrentCannonSprite()
 {
 	//NOTE: Spritesheets are currently made of a single column of images.
@@ -412,26 +459,33 @@ void BaseTank::MoveInHeadingDirection(float deltaTime)
 
 //--------------------------------------------------------------------------------------------------
 
-bool BaseTank::RotateHeadingToFacePosition(Vector2D target)
+bool BaseTank::RotateHeadingToFacePosition(Vector2D target, float deltaTime)
 {
 	Vector2D toTarget = Vec2DNormalize(GetCentralPosition()-target);
 
 	//Determine the angle between the heading vector and the target.
 	double angle = acos(mHeading.Dot(toTarget));
 
+	//Ensure angle does not become NaN and cause the tank to disappear.
+	if( angle != angle)
+		angle = 0.0f;
+
 	//Return true if the player is facing the target.
 	if(angle < 0.00001) 
 		return true;
 
-	RotateHeadingByRadian(angle, mHeading.Sign(toTarget));
+	RotateHeadingByRadian(angle, mHeading.Sign(toTarget), deltaTime);
 
 	return true;
 }
 
 //--------------------------------------------------------------------------------------------------
 
-void BaseTank::RotateHeadingByRadian(double radian, int sign)
+void BaseTank::RotateHeadingByRadian(double radian, int sign, float deltaTime)
 {
+	//Incorporate delta time.
+	radian *= deltaTime;
+
 	//Clamp the amount to turn to the max turn rate.
 	if (radian > mMaxTurnRate) 
 		radian = mMaxTurnRate;
@@ -495,8 +549,11 @@ void BaseTank::IncrementManRotationAngle(double deg)
 
 //--------------------------------------------------------------------------------------------------
 
-void BaseTank::RotateManByRadian(double radian, int sign)
+void BaseTank::RotateManByRadian(double radian, int sign, float deltaTime)
 {
+	//Incorporate delta time.
+	radian *= deltaTime;
+
 	//Clamp the amount to turn to the max turn rate.
 	if (radian > mMaxTurnRate) 
 		radian = mMaxTurnRate;
@@ -522,9 +579,9 @@ Rect2D BaseTank::GetAdjustedBoundingBox()
 	switch(mTankType)
 	{
 		case TANK_SMALL:
-			adjustedBoundingBox.x += adjustedBoundingBox.width*0.25f;
+			adjustedBoundingBox.x += adjustedBoundingBox.width*0.3f;
 			adjustedBoundingBox.y += adjustedBoundingBox.height*0.25f;	//Top of tank
-			adjustedBoundingBox.width *= 0.5f;
+			adjustedBoundingBox.width *= 0.4f;
 			adjustedBoundingBox.height *= 0.55f;						//From top down to bottom.
 		break;
 
@@ -634,7 +691,7 @@ void BaseTank::DropAMine()
 }
 
 //--------------------------------------------------------------------------------------------------
-
+/*
 void BaseTank::GetCornersOfTank(Vector2D* topLeft, Vector2D* topRight, Vector2D* bottomLeft, Vector2D* bottomRight)
 {
 	double left = GetCentralPosition().x - (mHeading.x*mManSingleSpriteHeight*0.3f);
@@ -704,7 +761,7 @@ void BaseTank::Rebound(Vector2D position)
 	//Cut the speed.
 	mCurrentSpeed = 0.0f;
 }
-
+*/
 //--------------------------------------------------------------------------------------------------
 
 void BaseTank::TakeDamage(GAMEOBJECT_TYPE projectileType)

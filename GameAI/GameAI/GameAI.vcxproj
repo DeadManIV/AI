@@ -79,7 +79,7 @@
     <ClInclude Include="i015203eTank.h" />
     <ClInclude Include="LevelMap.h" />
     <ClInclude Include="ObstacleManager.h" />
-    <ClInclude Include="Pathfinder.h" />
+    <ClInclude Include="i015203ePathfinder.h" />
     <ClInclude Include="PickUpManager.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileManager.h" />
@@ -102,7 +102,7 @@
     <ClCompile Include="i015203eTank.cpp" />
     <ClCompile Include="LevelMap.cpp" />
     <ClCompile Include="ObstacleManager.cpp" />
-    <ClCompile Include="Pathfinder.cpp" />
+    <ClCompile Include="i015203ePathfinder.cpp" />
     <ClCompile Include="PickUpManager.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectileManager.cpp" />

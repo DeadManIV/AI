@@ -4,10 +4,19 @@
 #include "BaseTank.h"
 #include <SDL.h>
 #include "Commons.h"
-#include "Pathfinder.h"
+#include "i015203ePathfinder.h"
+#include "PickUpManager.h"
 
 using namespace::std;
 
+enum STATE
+{
+	COLLECT,
+	WANDER,
+	FLEE,
+	ATTACK_SHOOT,
+	ATTACK_MINE,
+};
 //---------------------------------------------------------------
 
 class i015203eTank : protected BaseTank
@@ -52,12 +61,19 @@ private:
 	Vector2D GetClientCursorPosition();
 
 	Vector2D CombinedForces(Vector2D desiredPos);
+
+	void SwitchState(STATE state);
+
+	void CheckIfStateNeedsChange();
 	
 	void UpdateInput(SDL_Event e);
+
+	void UpdateState(float deltaTime);
 
 	Vector2D mousePos;
 	Vector2D mouseMotionPos;
 	Vector2D lastMousePos;
+
 	bool seekOn;
 	bool fleeOn;
 	bool fleeRadiusOn;
@@ -67,12 +83,38 @@ private:
 	bool obstacleCircle;
 	bool pathfinderBool;
 
+	//Avoidance
 	Vector2D ahead;
 	Vector2D ahead2;
 	double maxSeeAhead = 20.0;
 	double maxAvoidForce = 70.0;
 	Vector2D combinedForces;
+	
+	//States
+	STATE currentState;
 
+	//Collect
+	Vector2D collectLocation;
+	vector<Vector2D> collectPath;
+	int collectCurrentNode;
+	vector<GameObject*> pickups;
+
+	//Wander
+	Vector2D wanderLocation;
+	vector<Vector2D> wanderPath;
+	int wanderCurrentNode;
+	vector<Waypoint*> waypoints;
+
+	//Flee
+	Vector2D fleeLocation;
+	vector<Vector2D> fleePath;
+	int fleeCurrentNode;
+	//Tanks in view range can be accessed from the mTanksICanSee variable
+
+	//Attack shoot
+	Vector2D lastKnownPos;
+
+	//Pathfinding
 	Pathfinder* pathfinder;
 	int currentNode;
 	vector<Vector2D> path;

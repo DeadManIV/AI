@@ -73,7 +73,7 @@ void DumbTank::Update(float deltaTime, SDL_Event e)
 		toTarget.Normalize();
 		double dot = toTarget.Dot(mManFireDirection);
 		if(dot < 0.95f)
-			RotateManByRadian(0.05f, -1);
+			RotateManByRadian(kManTurnRate, -1, deltaTime);
 
 		//Otherwise stop moving and fire at the visible tank.
 		mVelocity = Vector2D();

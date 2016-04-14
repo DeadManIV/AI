@@ -90,7 +90,7 @@
     <ClInclude Include="i015203eTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Pathfinder.h">
+    <ClInclude Include="i015203ePathfinder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -164,7 +164,7 @@
     <ClCompile Include="i015203eTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Pathfinder.cpp">
+    <ClCompile Include="i015203ePathfinder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

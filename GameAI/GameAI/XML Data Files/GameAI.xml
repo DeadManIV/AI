@@ -686,47 +686,47 @@
     </object>
 
     <!--Buildings-->
-    <object name="Obstacle" x="95" y="63" width="127" height="127">
+    <object name="Obstacle" x="102" y="70" width="127" height="127">
       <properties>
         <property name="ID" value="1"/>
       </properties>
     </object>
-    <object name="Obstacle" x="319" y="63" width="127" height="127">
+    <object name="Obstacle" x="326" y="70" width="127" height="127">
       <properties>
         <property name="ID" value="2"/>
       </properties>
     </object>
-    <object name="Obstacle" x="128" y="223" width="253" height="125">
+    <object name="Obstacle" x="141" y="230" width="253" height="125">
       <properties>
         <property name="ID" value="3"/>
       </properties>
     </object>
-    <object name="Obstacle" x="576" y="120" width="126" height="286">
+    <object name="Obstacle" x="583" y="145" width="126" height="286">
       <properties>
         <property name="ID" value="4"/>
       </properties>
     </object>
-    <object name="Obstacle" x="736" y="120" width="126" height="286">
+    <object name="Obstacle" x="743" y="145" width="126" height="286">
       <properties>
         <property name="ID" value="5"/>
       </properties>
     </object>
-    <object name="Obstacle" x="256" y="447" width="127" height="127">
+    <object name="Obstacle" x="262" y="454" width="127" height="127">
       <properties>
         <property name="ID" value="2"/>
       </properties>
     </object>
-    <object name="Obstacle" x="95" y="447" width="127" height="127">
+    <object name="Obstacle" x="102" y="454" width="127" height="127">
       <properties>
         <property name="ID" value="1"/>
       </properties>
     </object>
-    <object name="Obstacle" x="576" y="416" width="127" height="127">
+    <object name="Obstacle" x="583" y="423" width="127" height="127">
       <properties>
         <property name="ID" value="1"/>
       </properties>
     </object>
-    <object name="Obstacle" x="736" y="416" width="127" height="127">
+    <object name="Obstacle" x="743" y="423" width="127" height="127">
       <properties>
         <property name="ID" value="2"/>
       </properties>
@@ -819,13 +819,13 @@
    </object>
    <object name="Waypoint" x="240" y="432" width="61" height="5">
      <properties>
-       <property name="Connections" value="13,15"/>
+       <property name="Connections" value="13,15,17"/>
        <property name="ID" value="14"/>
      </properties>
    </object>
    <object name="Waypoint" x="400" y="432" width="61" height="5">
      <properties>
-       <property name="Connections" value="11,14,19,23"/>
+       <property name="Connections" value="11,14,23"/>
        <property name="ID" value="15"/>
      </properties>
    </object>
@@ -879,7 +879,7 @@
    </object>
    <object name="Waypoint" x="560" y="400" width="61" height="5">
      <properties>
-       <property name="Connections" value="24,25,27"/>
+       <property name="Connections" value="23,25,27"/>
        <property name="ID" value="24"/>
      </properties>
    </object>

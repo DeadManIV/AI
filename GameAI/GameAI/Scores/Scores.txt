@@ -422,6 +422,168 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: ControlledTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
 Tank name: i015203eTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
@@ -429,6 +591,60 @@ Mines hit: 0		= 0
 Tanks destroyed: 0	= 0
 Crates collected: 0	= 0
 Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 0
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 0	= 0
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 12.5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 3	= 7.5
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 20
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 9	= 22.5
+Survival bonus': 5	= 25
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 12
+Bullets hit: 1		= 2
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 2	= 5
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 12
+Bullets hit: 1		= 2
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 2	= 5
+Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
 Tank name: i015203eTank   SCORE: 7.5
@@ -440,58 +656,22 @@ Crates collected: 1	= 2.5
 Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 5
-Bullets hit: 0		= 0
+Tank name: i015203eTank   SCORE: 12
+Bullets hit: 1		= 2
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
 Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
+Crates collected: 2	= 5
 Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
+Tank name: i015203eTank   SCORE: 12
+Bullets hit: 1		= 2
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
 Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 10
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 2	= 10
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
+Crates collected: 2	= 5
+Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
 Tank name: i015203eTank   SCORE: 5
@@ -503,16 +683,7 @@ Crates collected: 0	= 0
 Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 5
+Tank name: DumbTank   SCORE: 5
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -521,7 +692,34 @@ Crates collected: 0	= 0
 Survival bonus': 1	= 5
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -530,7 +728,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -539,7 +737,7 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -548,7 +746,61 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 20
+Bullets hit: 49		= 98
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 3	= 15
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: i015203eTank   SCORE: 20
+Bullets hit: 105		= 210
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 2	= 20
+Crates collected: 9	= 22.5
+Survival bonus': 6	= 30
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 5
+Bullets hit: 0		= 0
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 1	= 5
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -557,7 +809,16 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
+Tank name: DumbTank   SCORE: 17
+Bullets hit: 1		= 2
+Rockets hit: 0		= 0
+Mines hit: 0		= 0
+Tanks destroyed: 0	= 0
+Crates collected: 0	= 0
+Survival bonus': 3	= 15
+-------------------------------------------------------------
+-------------------------------------------------------------
+Tank name: DumbTank   SCORE: 0
 Bullets hit: 0		= 0
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
@@ -566,92 +827,11 @@ Crates collected: 0	= 0
 Survival bonus': 0	= 0
 -------------------------------------------------------------
 -------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
+Tank name: i015203eTank   SCORE: 20
+Bullets hit: 11		= 22
 Rockets hit: 0		= 0
 Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
--------------------------------------------------------------
--------------------------------------------------------------
-Tank name: i015203eTank   SCORE: 0
-Bullets hit: 0		= 0
-Rockets hit: 0		= 0
-Mines hit: 0		= 0
-Tanks destroyed: 0	= 0
-Crates collected: 0	= 0
-Survival bonus': 0	= 0
+Tanks destroyed: 2	= 20
+Crates collected: 3	= 7.5
+Survival bonus': 1	= 5
 -------------------------------------------------------------

@@ -43,8 +43,8 @@ public:
 	float			GetNoiseRadius();
 
 	void			SetPosition(Vector2D newPosition)						{mPosition = newPosition;}
-	Vector2D		GetPointAtFrontOfTank();
-	Vector2D		GetPointAtRearOfTank();
+	//Vector2D		GetPointAtFrontOfTank();
+	//Vector2D		GetPointAtRearOfTank();
 	
 	void			GetCornersOfTank(Vector2D* topLeft, Vector2D* topRight, Vector2D* bottomLeft, Vector2D* bottomRight);
 
@@ -63,7 +63,7 @@ public:
 	void			AddToScore(SCORE_TYPE scoreType);							
 	void			OutputScoreDetails();
 
-	void			Rebound(Vector2D position);
+	//void			Rebound(Vector2D position);
 
 	Vector2D		GetHeading()											{return mHeading;}
 	Vector2D		GetVelocity()											{return mVelocity;}
@@ -71,13 +71,17 @@ public:
 	
 	bool			CanSee(BaseTank* tank);
 	bool			IsAlive()												{return mAlive;}
+
+	void			Explode()												{mAlive = false; mExploding = true; mExplosionFrame = 0;}
+	bool			IsExploding()											{return mExploding;}
+	bool			HasExploded()											{return (mExploding && mExplosionFrame >= kNumberOfSpritesPerExplosion);}			
 	//---------------------------------------------------------------
 protected:
 	virtual void	MoveInHeadingDirection(float deltaTime);
 
-	bool			RotateHeadingToFacePosition(Vector2D target);
-	virtual void	RotateHeadingByRadian(double radian, int sign);		//Sign is direction of turn. Either -1 or 1.
-	void			RotateManByRadian(double radian, int sign);
+	bool			RotateHeadingToFacePosition(Vector2D target, float deltaTime);
+	virtual void	RotateHeadingByRadian(double radian, int sign, float deltaTime);		//Sign is direction of turn. Either -1 or 1.
+	void			RotateManByRadian(double radian, int sign, float deltaTime);
 
 	void			SetHeading(Vector2D newHeading);
 
@@ -89,6 +93,7 @@ protected:
 private:
 	SDL_Rect		GetCurrentManSprite();
 	SDL_Rect		GetCurrentCannonSprite();
+	SDL_Rect		GetCurrentExplosionSprite();
 
 	void			DrawFoV();
 	void			DrawDebugCircle(Vector2D centrePoint, float radius, int red, int green, int blue);
@@ -112,6 +117,7 @@ private:
 	float				mBulletDelay;
 	float				mRocketDelay;
 	float				mMineDelay;
+	float				mExplosionDelay;
 
 	Vector2D			mManOffset;
 	double				mManRotationAngle;
@@ -125,6 +131,15 @@ private:
 	bool				mCannonFireFrame;
 	float				mCannonFireTime;
 	bool				mFiringRocket;
+
+	Texture2D*			mExplosionSpritesheet;				//The explosion.
+	int					mExplosionSingleSpriteHeight;
+	int					mExplosionSingleSpriteWidth;
+	int					mExplosionFrame;
+	float				mExplosionTime;
+	bool				mExploding;
+	Vector2D			mExplosionOffset;
+
 	//Identifying details.
 	string				mStudentName;
 
